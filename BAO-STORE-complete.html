@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BAO.STORE — cửa hàng online demo hiện đại.">
+<title>BAO.STORE — Modern Online Shop</title>
+<style>
+:root{--bg:#f6f6f4;--surface:#fff;--ink:#151515;--muted:#777;--line:#e7e7e4;--soft:#f0f0ed;--radius:18px;--shadow:0 18px 50px rgba(0,0,0,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.container{width:min(1180px,calc(100% - 32px));margin:auto}.top{background:#111;color:#fff;font-size:12px;text-align:center;padding:8px}.header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.nav{height:70px;display:flex;align-items:center;gap:26px}.logo{font-size:21px;font-weight:950;letter-spacing:-1px;white-space:nowrap}.logo i{font-style:normal;color:#888}.navlinks{display:flex;gap:24px;margin-left:20px;font-size:14px;color:#444}.navlinks a:hover{color:#000}.navright{margin-left:auto;display:flex;gap:8px}.round{border:0;background:var(--soft);width:40px;height:40px;border-radius:12px}.cartBtn{position:relative}.badge{position:absolute;right:-3px;top:-4px;min-width:18px;height:18px;padding:0 5px;border-radius:99px;background:#111;color:#fff;font-size:10px;display:grid;place-items:center}
+.hero{margin:28px 0 52px;min-height:440px;border-radius:28px;background:#111;color:#fff;display:flex;align-items:center;position:relative;overflow:hidden;padding:60px}.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:#242424}.hero:before{width:420px;height:420px;right:60px;top:-90px}.hero:after{width:190px;height:190px;right:300px;bottom:-100px;background:#333}.heroText{position:relative;z-index:2;max-width:650px}.eyebrow{font-size:11px;letter-spacing:2.2px;text-transform:uppercase;color:#aaa;font-weight:800}.hero h1{font-size:clamp(44px,7vw,78px);line-height:.93;letter-spacing:-4px;margin:16px 0}.hero p{max-width:550px;color:#c6c6c6;line-height:1.65}.primary{border:0;background:#fff;color:#111;border-radius:12px;padding:13px 19px;font-weight:800;margin-top:10px}.heroIcon{position:absolute;z-index:2;right:115px;font-size:118px;filter:drop-shadow(0 28px 20px #0008);transform:rotate(-7deg)}
+.sectionHead{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}.sectionHead h2{margin:0;font-size:29px;letter-spacing:-1.3px}.sectionHead small{color:var(--muted)}
+.controls{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-bottom:24px}.filters{display:flex;gap:8px;overflow:auto}.filter{border:1px solid var(--line);background:#fff;border-radius:99px;padding:9px 15px;white-space:nowrap;color:#666}.filter.active{background:#111;color:#fff;border-color:#111}.search{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 13px;width:220px;outline:none}.search:focus{border-color:#999}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.product{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:.2s;position:relative}.product:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.visual{height:235px;background:linear-gradient(145deg,#efefec,#fafaf8);display:grid;place-items:center;font-size:83px;position:relative}.discount{position:absolute;left:12px;top:12px;background:#111;color:#fff;padding:5px 8px;border-radius:8px;font-size:10px;font-weight:800}.heart{position:absolute;right:12px;top:12px;width:34px;height:34px;border:0;border-radius:10px;background:#fff}.heart.on{background:#111;color:#fff}.info{padding:16px}.cat{font-size:10px;color:#999;letter-spacing:1px;font-weight:800}.name{font-weight:800;margin:6px 0}.price{font-weight:900}.old{color:#aaa;text-decoration:line-through;font-size:12px;font-weight:400;margin-left:6px}.buy{width:100%;border:0;background:#111;color:#fff;border-radius:10px;padding:11px;margin-top:14px;font-weight:800}.buy:hover{background:#333}.empty{grid-column:1/-1;background:#fff;border:1px dashed #ccc;border-radius:16px;text-align:center;padding:55px;color:#777}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:70px 0}.feature{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px}.feature b{display:block;margin-bottom:5px}.feature span{font-size:13px;color:#777;line-height:1.5}
+footer{border-top:1px solid var(--line);padding:40px 0 55px;color:#777;font-size:13px}.footerGrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}.footerGrid b{color:#111;font-size:18px}.footerGrid h4{margin:0 0 10px;color:#222}.footerGrid p{line-height:1.7;margin:4px 0}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:50;display:none}.overlay.show{display:block}.drawer{position:absolute;right:0;top:0;height:100%;width:min(450px,100%);background:#fff;padding:23px;display:flex;flex-direction:column;box-shadow:-15px 0 50px #0002}.drawerHead{display:flex;align-items:center;justify-content:space-between}.drawerHead h2{margin:0}.close{width:38px;height:38px;border:0;border-radius:10px;background:var(--soft)}.items{flex:1;overflow:auto;margin:16px 0}.cartItem{display:flex;gap:12px;padding:15px 0;border-bottom:1px solid var(--line)}.mini{width:68px;height:68px;flex:none;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-size:31px}.ci{flex:1}.ci b{display:block;margin-bottom:5px}.qty{display:flex;align-items:center;gap:8px;margin-top:9px}.qty button{width:26px;height:26px;border:0;border-radius:7px;background:#eee}.remove{margin-left:auto!important;background:transparent!important}.checkout{border-top:1px solid var(--line);padding-top:17px}.total{display:flex;justify-content:space-between;font-size:18px;font-weight:900;margin-bottom:13px}.checkoutBtn{width:100%;border:0;border-radius:12px;background:#111;color:#fff;padding:13px;font-weight:800}.modal{position:fixed;inset:0;z-index:60;display:none;place-items:center;background:#0007;padding:18px}.modal.show{display:grid}.modalBox{background:#fff;border-radius:20px;padding:25px;width:min(470px,100%);box-shadow:var(--shadow)}.modalBox h2{margin-top:0}.form{display:grid;gap:11px}.form input,.form textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px;outline:none}.form textarea{min-height:80px;resize:vertical}.toast{position:fixed;z-index:100;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;background:#111;color:#fff;border-radius:11px;padding:11px 16px;font-size:13px;transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero{padding:42px}.heroIcon{right:60px}.navlinks{display:none}.footerGrid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.container{width:min(100% - 24px,1180px)}.top{font-size:10px}.nav{height:62px}.hero{margin-top:15px;min-height:410px;padding:30px;border-radius:21px}.hero h1{font-size:48px;letter-spacing:-2.7px}.heroIcon{font-size:72px;right:22px;top:35px}.controls{display:block}.search{width:100%;margin-top:12px}.grid{gap:10px}.visual{height:175px;font-size:60px}.info{padding:12px}.features{grid-template-columns:1fr;margin:50px 0}.footerGrid{grid-template-columns:1fr}.sectionHead h2{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="top">🚚 Miễn phí vận chuyển cho đơn từ 500.000₫ · Demo website</div>
+<header class="header"><div class="container nav">
+<a class="logo" href="#home">BAO<span>.</span>STORE</a>
+<nav class="navlinks"><a href="#home">Trang chủ</a><a href="#products">Sản phẩm</a><a href="#about">Về chúng tôi</a></nav>
+<div class="navright"><button class="round" onclick="document.getElementById('search').focus()" title="Tìm kiếm">⌕</button><button class="round cartBtn" onclick="openCart()" title="Giỏ hàng">🛒<span class="badge" id="badge">0</span></button></div>
+</div></header>
+
+<main class="container" id="home">
+<section class="hero"><div class="heroText"><div class="eyebrow">BAO.STORE · NEW COLLECTION</div><h1>Đơn giản.<br>Chất lượng.</h1><p>Những sản phẩm được chọn lọc cho học tập, công nghệ và cuộc sống hằng ngày — giao diện demo sẵn sàng để phát triển thành shop thật.</p><button class="primary" onclick="document.getElementById('products').scrollIntoView()">Khám phá ngay →</button></div><div class="heroIcon">🎧</div></section>
+
+<section id="products">
+<div class="sectionHead"><h2>Sản phẩm nổi bật</h2><small id="count"></small></div>
+<div class="controls"><div class="filters">
+<button class="filter active" data-cat="all">Tất cả</button><button class="filter" data-cat="tech">Công nghệ</button><button class="filter" data-cat="study">Học tập</button><button class="filter" data-cat="life">Đời sống</button>
+</div><input class="search" id="search" placeholder="🔎  Tìm sản phẩm..." oninput="render()"></div>
+<div class="grid" id="grid"></div>
+</section>
+
+<section class="features">
+<div class="feature"><b>🚚 Giao hàng nhanh</b><span>Demo chính sách giao hàng — có thể thay bằng thông tin thật của shop.</span></div>
+<div class="feature"><b>🔒 Thanh toán an toàn</b><span>Checkout hiện đang mô phỏng, chưa kết nối cổng thanh toán.</span></div>
+<div class="feature"><b>💬 Hỗ trợ khách hàng</b><span>Thiết kế sẵn để tích hợp Messenger, Zalo hoặc hệ thống CSKH.</span></div>
+</section>
+</main>
+
+<footer id="about"><div class="container footerGrid">
+<div><b>BAO.STORE</b><p>Modern online shop demo.</p><p>© 2026 BAO.STORE. All rights reserved.</p></div>
+<div><h4>Khám phá</h4><p><a href="#products">Sản phẩm</a></p><p><a href="#home">Trang chủ</a></p></div>
+<div><h4>Hỗ trợ</h4><p>Chính sách giao hàng</p><p>Đổi trả & bảo hành</p></div>
+</div></footer>
+
+<div class="overlay" id="cartOverlay" onclick="if(event.target===this)closeCart()"><aside class="drawer">
+<div class="drawerHead"><h2>Giỏ hàng</h2><button class="close" onclick="closeCart()">✕</button></div>
+<div class="items" id="items"></div>
+<div class="checkout"><div class="total"><span>Tổng cộng</span><span id="total">0₫</span></div><button class="checkoutBtn" onclick="checkout()">Tiến hành thanh toán</button></div>
+</aside></div>
+
+<div class="modal" id="orderModal"><div class="modalBox">
+<div class="drawerHead"><h2>Thông tin nhận hàng</h2><button class="close" onclick="closeModal()">✕</button></div>
+<form class="form" onsubmit="placeOrder(event)">
+<input required id="customer" placeholder="Họ và tên">
+<input required id="phone" type="tel" placeholder="Số điện thoại">
+<textarea required id="address" placeholder="Địa chỉ nhận hàng"></textarea>
+<button class="checkoutBtn" type="submit">Xác nhận đặt hàng</button>
+</form>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const products=[
+{id:1,name:"Tai nghe Nova Air",cat:"tech",emoji:"🎧",price:1290000,old:1590000},
+{id:2,name:"Bàn phím Mini Pro",cat:"tech",emoji:"⌨️",price:890000},
+{id:3,name:"Đèn học Focus",cat:"study",emoji:"💡",price:490000},
+{id:4,name:"Sổ Planner 2026",cat:"study",emoji:"📓",price:159000},
+{id:5,name:"Bình giữ nhiệt",cat:"life",emoji:"🥤",price:279000},
+{id:6,name:"Túi Daily Backpack",cat:"life",emoji:"🎒",price:690000},
+{id:7,name:"Chuột không dây",cat:"tech",emoji:"🖱️",price:390000},
+{id:8,name:"Giá đỡ laptop",cat:"study",emoji:"💻",price:350000}
+];
+let cart=JSON.parse(localStorage.getItem("baoCart")||"[]"),active="all",favorites=JSON.parse(localStorage.getItem("baoFav")||"[]");
+const money=n=>n.toLocaleString("vi-VN")+"₫";
+const catName=c=>({tech:"CÔNG NGHỆ",study:"HỌC TẬP",life:"ĐỜI SỐNG"}[c]);
+function render(){
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ const list=products.filter(p=>(active==="all"||p.cat===active)&&p.name.toLowerCase().includes(q));
+ document.getElementById("count").textContent=list.length+" sản phẩm";
+ document.getElementById("grid").innerHTML=list.length?list.map(p=>`<article class="product">
+ <div class="visual">${p.old?'<span class="discount">SALE</span>':''}<button class="heart ${favorites.includes(p.id)?"on":""}" onclick="toggleFav(${p.id})">${favorites.includes(p.id)?"♥":"♡"}</button>${p.emoji}</div>
+ <div class="info"><div class="cat">${catName(p.cat)}</div><div class="name">${p.name}</div>
+ <div class="price">${money(p.price)}${p.old?`<span class="old">${money(p.old)}</span>`:""}</div>
+ <button class="buy" onclick="add(${p.id})">Thêm vào giỏ</button></div></article>`).join(""):`<div class="empty">Không tìm thấy sản phẩm phù hợp 😅<br><button style="margin-top:12px;border:0;background:#111;color:#fff;padding:9px 14px;border-radius:9px" onclick="document.getElementById('search').value='';render()">Xóa tìm kiếm</button></div>`;
+ updateBadge();
+}
+function toggleFav(id){favorites.includes(id)?favorites=favorites.filter(x=>x!==id):favorites.push(id);localStorage.setItem("baoFav",JSON.stringify(favorites));render()}
+function add(id){const x=cart.find(i=>i.id===id);x?x.qty++:cart.push({id,qty:1});save();toast("Đã thêm vào giỏ hàng ✓")}
+function save(){localStorage.setItem("baoCart",JSON.stringify(cart));updateBadge()}
+function updateBadge(){document.getElementById("badge").textContent=cart.reduce((s,i)=>s+i.qty,0)}
+function openCart(){renderCart();document.getElementById("cartOverlay").classList.add("show")}
+function closeCart(){document.getElementById("cartOverlay").classList.remove("show")}
+function renderCart(){
+ const box=document.getElementById("items");
+ if(!cart.length){box.innerHTML='<div style="text-align:center;color:#888;padding:60px 10px">Giỏ hàng đang trống 🛒</div>';document.getElementById("total").textContent="0₫";return}
+ let total=0;
+ box.innerHTML=cart.map(i=>{const p=products.find(x=>x.id===i.id),sub=p.price*i.qty;total+=sub;return `<div class="cartItem"><div class="mini">${p.emoji}</div><div class="ci"><b>${p.name}</b><span>${money(p.price)}</span><div class="qty"><button onclick="change(${p.id},-1)">−</button><span>${i.qty}</span><button onclick="change(${p.id},1)">+</button><button class="remove" onclick="removeItem(${p.id})">🗑</button></div></div></div>`}).join("");
+ document.getElementById("total").textContent=money(total);
+}
+function change(id,n){const x=cart.find(i=>i.id===id);if(x){x.qty+=n;if(x.qty<=0)cart=cart.filter(i=>i.id!==id)}save();renderCart()}
+function removeItem(id){cart=cart.filter(i=>i.id!==id);save();renderCart()}
+function checkout(){if(!cart.length){toast("Giỏ hàng đang trống");return}document.getElementById("orderModal").classList.add("show")}
+function closeModal(){document.getElementById("orderModal").classList.remove("show")}
+function placeOrder(e){e.preventDefault();const name=document.getElementById("customer").value;cart=[];save();closeModal();closeCart();e.target.reset();toast("Cảm ơn "+name+"! Đơn demo đã được tạo 🎉")}
+function toast(t){const x=document.getElementById("toast");x.textContent=t;x.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>x.classList.remove("show"),2000)}
+document.querySelectorAll(".filter").forEach(b=>b.onclick=()=>{document.querySelectorAll(".filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");active=b.dataset.cat;render()});
+render();
+</script>
+</body>
+</html>
